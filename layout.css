@@ -1,0 +1,210 @@
+/* 
+ * LAYOUT.CSS
+ * Estilos de layout seguindo a metodologia SMACSS
+ * Contém estruturas principais do site (header, footer, seções)
+ * Utiliza CSS Grid para organização do layout
+ */
+
+/* HEADER 
+ * Estilo do cabeçalho principal
+ */
+ .site-header {
+    background-color: var(--white);
+    box-shadow: var(--box-shadow);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: var(--spacing-sm) 0;
+}
+
+.site-header .container {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: var(--spacing-lg);
+}
+
+/* HERO SECTION 
+ * Seção de destaque
+ */
+.hero-section {
+    /* Imagem de fundo de alta qualidade relacionada a tecnologia verde */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                      url('https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+    background-size: cover;
+    background-position: center;
+
+    min-height: 80vh;
+    display: grid;
+    place-items: center;
+    color: var(--white);
+    padding: var(--spacing-xl) 0;
+    margin-top: 70px; /* Compensar o header fixo */
+}
+
+.hero-content {
+    max-width: 800px;
+    text-align: center;
+    margin: 0 auto;
+    padding: var(--spacing-lg);
+    background-color: rgba(0, 0, 0, 0.3); /* Fundo semi-transparente para melhorar legibilidade */
+    border-radius: var(--border-radius);
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-md);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Sombra para melhorar legibilidade */
+}
+
+.hero-content p {
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-lg);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); /* Sombra para melhorar legibilidade */
+}
+
+/* SERVICES SECTION 
+ * Seção de serviços com grid de cards
+ */
+.services-section {
+    padding: var(--spacing-xl) 0;
+    background-color: var(--light-gray);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-lg);
+}
+
+/* ABOUT SECTION 
+ * Seção sobre a empresa
+ */
+.about-section {
+    padding: var(--spacing-xl) 0;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-lg);
+    align-items: center;
+}
+
+/* TESTIMONIALS SECTION 
+ * Seção de depoimentos
+ */
+.testimonials-section {
+    padding: var(--spacing-xl) 0;
+    background-color: var(--secondary-color);
+    color: var(--white);
+}
+
+.testimonials-section .section-title {
+    color: var(--white);
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-lg);
+}
+
+/* CONTACT SECTION 
+ * Seção de contato
+ */
+.contact-section {
+    padding: var(--spacing-xl) 0;
+    background-color: var(--light-gray);
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: var(--spacing-lg);
+}
+
+/* FOOTER 
+ * Rodapé do site
+ */
+.site-footer {
+    background-color: var(--secondary-color);
+    color: var(--white);
+    padding: var(--spacing-xl) 0 var(--spacing-lg);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: var(--spacing-md);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* MEDIA QUERIES 
+ * Ajustes de layout para diferentes tamanhos de tela
+ */
+@media (max-width: 992px) {
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .footer-about {
+        grid-column: span 2;
+        margin-bottom: var(--spacing-md);
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-info {
+        order: 2;
+    }
+    
+    .contact-form {
+        order: 1;
+        margin-bottom: var(--spacing-lg);
+    }
+    
+    .hero-section {
+        background-attachment: scroll; /* Desativa o parallax em dispositivos móveis para melhor desempenho */
+    }
+}
+
+@media (max-width: 576px) {
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-about {
+        grid-column: 1;
+    }
+    
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-content p {
+        font-size: 1rem;
+    }
+}
